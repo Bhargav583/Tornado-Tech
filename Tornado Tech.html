@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tornado Tech - Latest Tech Innovations, Reviews, and Creative Explainers">
+    <meta property="og:title" content="Tornado Tech - Unique Experience">
+    <meta property="og:description" content="Catch the Latest Tech Videos and Reviews">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta name="keywords" content="tech videos, latest phones, reviews, tech explanations">
+    <meta name="robots" content="index, follow">
+    <title>Tornado Tech - Unique Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b0b0b;
+            color: #f0f0f0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        body, a {
+            cursor: url('https://via.placeholder.com/32x32.png?text=O'), auto;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            color: #4af0f5;
+            animation: fadeIn 2s ease-out;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        nav ul li:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        nav ul li:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        nav ul li:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        nav ul li a:hover {
+            color: #4af0f5;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Mobile Nav Icon (3 dots) */
+        .mobile-nav-icon {
+            display: none;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu ul li {
+            margin: 10px 0;
+        }
+
+        .mobile-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: #4af0f5;
+        }
+
+        /* Diagonal Section Styling */
+        .diagonal-section {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            background: linear-gradient(135deg, #1e1e1e, #4af0f5);
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: slideIn 1.5s forwards;
+        }
+
+        .diagonal-section::after {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        .intro h2 {
+            font-size: 2.5em;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+            animation-delay: 1s;
+            text-align: center;
+        }
+
+        .explore-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4af0f5, #4a90e2);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 50px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+            animation-delay: 1.2s;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Videos Section */
+        .content-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px 15px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .content-section h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInDown 1.5s ease forwards;
+        }
+
+        .tech-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            width: 45%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .tech-item h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #4af0f5;
+        }
+
+        .tech-item p {
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        /* Enhanced Best Latest Phones Section */
+        .phones-section {
+            padding: 50px;
+            background-color: #1e1e1e;
+        }
+
+        .phones-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #4af0f5;
+            margin-bottom: 30px;
+        }
+
+        .phone-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        .phone-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .phone-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .phone-item span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #4af0f5;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b0b0b;
+            padding: 20px;
+            text-align: center;
+            color: #888;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        .social-icons-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons-footer img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons-footer img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Button Glow Animation */
+        .explore-btn {
+            animation: glow 2s infinite ease-in-out;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #4af0f5, 0 0 10px #4af0f5, 0 0 20px #4af0f5, 0 0 40px #4af0f5;
+            }
+            50% {
+                text-shadow: 0 0 10px #4af0f5, 0 0 20px #4af0f5, 0 0 40px #4af0f5, 0 0 60px #4af0f5;
+            }
+            100% {
+                text-shadow: 0 0 5px #4af0f5, 0 0 10px #4af0f5, 0 0 20px #4af0f5, 0 0 40px #4af0f5;
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.2em;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-nav-icon {
+                display: block;
+            }
+
+            .diagonal-section {
+                padding: 40px 10px;
+            }
+
+            .intro h2 {
+                font-size: 2em;
+            }
+
+            .explore-btn {
+                font-size: 1em;
+                padding: 10px 25px;
+            }
+
+            .tech-items {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-item {
+                width: 80%;
+            }
+
+            .phones-section h2 {
+                font-size: 1.8em;
+            }
+
+            .phone-list {
+                font-size: 0.9em;
+            }
+
+            .social-icons-footer img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-btn {
+                font-size: 0.9em;
+                padding: 8px 20px;
+            }
+
+            .tech-item {
+                width: 90%;
+            }
+
+            .intro h2 {
+                font-size: 1.8em;
+            }
+
+            .phones-section h2 {
+                font-size: 1.5em;
+            }
+
+            .phone-list {
+                font-size: 0.85em;
+            }
+
+            .social-icons-footer img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Tech is my &hearts;</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#videos">Latest Videos</a></li>
+                <li><a href="#phones">Best Latest Phones</a></li>
+                <li><a href="#explanation">New launched Tech Explanation</a></li>
+            </ul>
+        </nav>
+        <!-- 3 dots for mobile menu -->
+        <div class="mobile-nav-icon" onclick="toggleMobileMenu()">&#x22EE;</div>
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#videos">Latest Videos</a></li>
+                <li><a href="#phones">Best Latest Phones</a></li>
+                <li><a href="#explanation">New launched Tech Explanation</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Section with Diagonal Design -->
+    <section id="home" class="diagonal-section">
+        <div class="intro">
+            <h2>Welcome to Tornado Tech</h2>
+            <p>Creating Tech Content as a Passion!</p>
+            <button class="explore-btn">Watch Latest Videos</button>
+        </div>
+    </section>
+
+    <!-- Latest Videos Section -->
+    <section id="videos" class="content-section">
+        <h2>Latest Videos</h2>
+        <div class="tech-items">
+            <div class="tech-item" onclick="window.location.href='https://youtu.be/UcAZtXjLtHk?si=HPhFIg1LJPliYC4N';">
+                <h3>Beware of this Scam!</h3>
+                <p>Watch this Video, or Regret! (Scam of Mobile Chargers)</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtu.be/6V2Kj9ahjr8?si=XGenRnYRWiCDoVEg';">
+                <h3>Is Anarc a Scam By Tech Burner?</h3>
+                <p>Pros And Cons explained of Anarc, with whole Research!</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtu.be/7T2MQq56zck?si=d3wiuQmfIgHa4ntK';">
+                <h3>My first YouTube Video!</h3>
+                <p>While Playing Minecraft!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Latest Phones Section -->
+    <section id="phones" class="phones-section">
+        <h2>Best Latest Phones</h2>
+        <ul class="phone-list">
+            <li class="phone-item">1. iPhone 16 Series <span>: Starts at ₹79,900</span></li>
+            <li class="phone-item">2. CMF Phone 1 <span>: ₹14,999 </span></li>
+            <li class="phone-item">3. Galaxy S25 Series <span>: Starts at ₹80,899</span></li>
+            <li class="phone-item">4. POCO X7 Pro <span>: ₹27,999 </span></li>
+            <li class="phone-item">5. OnePlus 13 Series <span>: Starts at ₹42,999</span></li>
+            <li class="phone-item">6. Redmi 14C <span>: ₹9,999</span></li>
+			<li class="phone-item">7. Vivo X200 Series <span>: ₹65,999</span></li>
+			<li class="phone-item">8. Galaxy S24 FE<span>: ₹44,999</span></li>
+			<li class="phone-item">9. Redmi 13<span>: ₹13,999</span></li>
+			<li class="phone-item">10. Galaxy A16<span>: ₹16,999</span></li>
+			
+			
+			
+        </ul>
+    </section>
+    
+    <!-- New Launched Tech Explanation Section -->
+    <section id="explanation" class="content-section">
+        <h2>New launched Tech Explanation</h2>
+        <div class="tech-items">
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/jZuVd3-77HI?si=8WFPy4bRfQiLtsy4';">
+                <h3>1+ 13 Series</h3>
+                <p>Explained all Specs of Both Phones, in Less than 1Min!</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/2VNHWyAoxS0?si=zoVqHkZEMgDnUmfT';">
+                <h3>Redmi 14C</h3>
+                <p>Explained all Specs in Less than 1Min!</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/54LFInzXUOg?si=1N1sQrzc4U6nQA6r';">
+                <h3>Apple Event 2024</h3>
+                <p>Explained Specs of iPhone 16 Series, with all other launches, in Less than 1Min!</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/S2bQNF9JVws?si=FLfgPBk69WLtozt8';">
+                <h3>Galaxy Unpacked Event 2024</h3>
+                <p>Explained Specs of Galaxy Z Fold 6 & Flip along with other launches, in Less than 1Min!</p>
+            </div>
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/S2bQNF9JVws?si=FLfgPBk69WLtozt8';">
+                <h3>Anarc Short Review!</h3>
+                <p>Explained Pros & Cons of Anarc, in Less than 1Min!</p>
+            </div> 
+            <div class="tech-item" onclick="window.location.href='https://youtube.com/shorts/HQLWhEw5MQY?si=S9L1zIoZdyquefxa';">
+                <h3>Galaxy S24 FE</h3>
+                <p>Explained Specs of Galaxy S24 FE, in Less than 1Min!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Thanks for Supporting a Young Tech Creator!</p>
+        <div class="social-icons-footer">
+            <a href="https://whatsapp.com/channel/0029VaXsEEN42DcWp2THgP1P" target="_blank">
+                <img src="wa.png" alt="WhatsApp">
+            </a>
+            <a href="https://www.youtube.com/@tornado-tech2580" target="_blank">
+                <img src="logo.png" alt="YouTube">
+            </a>
+            <a href="https://www.instagram.com/tornadotech2580/?igsh=MXBvcWN6b2NsOHg0Mg%3D%3D#" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        document.querySelector('.explore-btn').addEventListener('click', function () {
+            window.scrollTo({
+                top: document.querySelector('#videos').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
